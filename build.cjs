@@ -1,0 +1,1 @@
+const fs=require('node:fs');const path=require('node:path');const p=n=>path.join(__dirname,n);let s=fs.readFileSync(p('template.html'),'utf8');for(const [tag,file]of [['CORE','core.js'],['UI','ui.js']])s=s.replace('/*'+tag+'*/',()=>fs.readFileSync(p(file),'utf8'));fs.writeFileSync(p('index.html'),s);console.log('Built index.html',Buffer.byteLength(s),'bytes');
